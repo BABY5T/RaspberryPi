@@ -3,6 +3,8 @@ import cv2
 import socket
 import numpy as np
  
+print("opencv-version:", cv2.__version__)
+print("numpy-version:", np.__version__)
 ## TCP 사용
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ## server ip, port
