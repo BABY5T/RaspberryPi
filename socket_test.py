@@ -8,7 +8,7 @@ print("numpy-version:", np.__version__)
 ## TCP 사용
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ## server ip, port
-s.connect(('172.16.97.110', 3000))
+s.connect(('172.19.23.166', 3000))
  
  
 ## webcam 이미지 capture
