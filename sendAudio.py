@@ -4,6 +4,16 @@ from socket import *
 import os
 import time
 
+from dotenv import load_dotenv
+import os 
+
+# load .env
+load_dotenv()
+# 서버임
+rasbIp = os.environ.get('rasbIp')
+audioSocketPort = int(os.environ.get('audioSocketPort'))
+
+
 CHUNK = 1024
 FORMAT = pyaudio.paInt16
 CHANNELS = 0
@@ -74,8 +84,8 @@ def record_and_save():
 
 # 서버 소켓 설정
 serverSocket = socket(AF_INET, SOCK_STREAM)
-serverPort = 12345
-serverSocket.bind(("", serverPort))
+serverPort = audioSocketPort
+serverSocket.bind((rasbIp, audioSocketPort))
 serverSocket.listen(1)
 print('Ready to serve...')
 

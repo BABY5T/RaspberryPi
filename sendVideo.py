@@ -3,6 +3,16 @@ import cv2
 import socket
 import numpy as np
 
+from dotenv import load_dotenv
+import os 
+
+# load .env
+load_dotenv()
+
+
+serverIp = os.environ.get('serverIp')
+videoSocketPort = int(os.environ.get('videoSocketPort'))
+
 d = np.array([1,2,3])
 print(d.tostring())
 
@@ -12,7 +22,7 @@ print("numpy-version:", np.__version__)
 # TCP 사용
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # server ip, port
-s.connect(('172.19.23.166', 3000))
+s.connect((serverIp, videoSocketPort))
 
 try:
     # webcam 이미지 capture
