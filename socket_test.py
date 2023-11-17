@@ -2,7 +2,10 @@
 import cv2
 import socket
 import numpy as np
- 
+
+d = np.array([1,2,3])
+print(d.tostring())
+
 print("opencv-version:", cv2.__version__)
 print("numpy-version:", np.__version__)
 ## TCP 사용
@@ -25,11 +28,21 @@ while True:
     # 비디오의 한 프레임씩 읽는다.
     # 제대로 읽으면 ret = True, 실패면 ret = False, frame에는 읽은 프레임
     ret, frame = cam.read()
+    if not ret:
+        print("프레임 실패")
+        break
+    
+    try:
     # cv2. imencode(ext, img [, params])
     # encode_param의 형식으로 frame을 jpg로 이미지를 인코딩한다.
-    result, frame = cv2.imencode('.jpg', frame, encode_param)
+        result, frame = cv2.imencode('.jpg', frame, encode_param)
+        if not result:
+            raise ValueError("이미지 인코딩 실패")
+    except Exception as e:
+        print("인코딩 중 오류 발생 :",e)
+        break
     # frame을 String 형태로 변환
-    data = numpy.array(frame)
+    data = np.array(frame)
     stringData = data.tostring()
  
     #서버에 데이터 전송
