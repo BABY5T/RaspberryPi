@@ -6,6 +6,7 @@ import numpy as np
 from dotenv import load_dotenv
 import os 
 
+
 # load .env
 load_dotenv()
 
@@ -15,8 +16,7 @@ videoSocketPort = int(os.environ.get('videoSocketPort'))
 
 d = np.array([1,2,3])
 print(d.tostring())
-print("opencv-version:", cv2.__version__)
-print("numpy-version:", np.__version__)
+
 
 # TCP 사용
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
