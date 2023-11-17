@@ -15,7 +15,8 @@ s.connect(('172.19.23.166', 3000))
  
  
 ## webcam 이미지 capture
-cam = cv2.VideoCapture(0)
+cam = cv2.VideoCapture("/dev/video0")
+
  
 ## 이미지 속성 변경 3 = width, 4 = height
 cam.set(3, 320);
@@ -43,10 +44,14 @@ while True:
         break
     # frame을 String 형태로 변환
     data = np.array(frame)
+<<<<<<< HEAD
     stringData = data.tostring()
+=======
+    stringData = data.tobytes()
+>>>>>>> a9224137458472054f48477823abbaac69d05569
  
     #서버에 데이터 전송
     #(str(len(stringData))).encode().ljust(16)
-    s.sendall((str(len(stringData))).encode().ljust(16) + stringData)
+    s.sendall(str(len(stringData)).encode().ljust(16) + stringData)
  
 cam.release()
