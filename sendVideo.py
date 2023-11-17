@@ -10,8 +10,8 @@ import os
 load_dotenv()
 
 
-serverIp = os.environ.get('serverIp')
-videoSocketPort = int(os.environ.get('videoSocketPort'))
+serverIp = os.getenv('serverIp')
+videoSocketPort = int(os.getenv('videoSocketPort'))
 
 d = np.array([1,2,3])
 print(d.tostring())

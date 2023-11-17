@@ -10,8 +10,8 @@ import os
 # load .env
 load_dotenv()
 # 서버임
-rasbIp = os.environ.get('rasbIp')
-audioSocketPort = int(os.environ.get('audioSocketPort'))
+rasbIp = os.getenv('rasbIp')
+audioSocketPort = int(os.getenv('audioSocketPort'))
 
 
 CHUNK = 1024
