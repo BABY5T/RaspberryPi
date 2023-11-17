@@ -10,8 +10,8 @@ import os
 # load .env
 load_dotenv()
 # 서버임
-rasbIp = os.environ.get('rasbIp')
-audioSocketPort = int(os.environ.get('audioSocketPort'))
+rasbIp = os.getenv('rasbIp')
+audioSocketPort = int(os.getenv('audioSocketPort'))
 
 
 CHUNK = 1024
@@ -21,7 +21,7 @@ RATE = 22050
 RECORD_SECONDS = 4
 INTERVAL = 4  # 녹음 간격 (초 단위)
 RECORD_COUNT = 3  # 원하는 녹음 및 파일 전송 횟수
-OUTPUT_DIR = '/home/lunar20617/음악'
+OUTPUT_DIR = '/home/luna20617/음악'
 count = 0
 
 def record_and_save():
