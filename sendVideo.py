@@ -15,7 +15,6 @@ videoSocketPort = int(os.environ.get('videoSocketPort'))
 
 d = np.array([1,2,3])
 print(d.tostring())
-
 print("opencv-version:", cv2.__version__)
 print("numpy-version:", np.__version__)
 
@@ -58,19 +57,13 @@ while True:
 
     # frame을 String 형태로 변환
     data = np.array(frame)
-<<<<<<< HEAD
     stringData = data.tostring()
-=======
     stringData = data.tobytes()
-<<<<<<< HEAD
->>>>>>> a9224137458472054f48477823abbaac69d05569
  
     #서버에 데이터 전송
     #(str(len(stringData))).encode().ljust(16)
-=======
 
     # 서버에 데이터 전송
->>>>>>> 45128bd6f28fb36bef2144275d0c300e15fab01a
     s.sendall(str(len(stringData)).encode().ljust(16) + stringData)
 
 cam.release()
